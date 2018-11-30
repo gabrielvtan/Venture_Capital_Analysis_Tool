@@ -1,9 +1,21 @@
+## Test - for Investment companies and schools 
+"""
+WITH "https://api.crunchbase.com/v3.1/organizations/tiger-global?data=key_set_url?relationships=funding_rounds,founders,board_members_and_advisors,investments,acquisitions,acquired_by,ipo,funds,category,current_team&user_key=cf5494206fc66e0d489c8e3762a8ffd3" AS url
+CALL apoc.load.json(url) YIELD value
+UNWIND value.data AS o
+UNWIND o.relationships.current_team.items as currentTeam
+WITH DISTINCT currentTeam
+
+"""
+
 ## Test - Get info from DB
 def test_query():
     return("""
         MATCH(c)
         RETURN count(c) AS NodeCount
     """)
+
+        
 
 # CONSTRAINTS
 def const_comp():
@@ -24,6 +36,9 @@ def const_head():
 def const_cat():
     return("CREATE CONSTRAINT ON (c:Category) ASSERT c.uuid IS UNIQUE;") 
 
+def const_ipo():
+    return("CREATE CONSTRAINT ON (i:Ipo) ASSERT i.uuid IS UNIQUE;") 
+
 
 # INDEXES
 def ind_comp():
@@ -34,6 +49,10 @@ def ind_pers():
 
 def ind_cat():
     return("CREATE INDEX ON :Category(name);")
+
+def ind_fr():
+    return("CREATE INDEX ON :FundingRounds(type);")
+
 
 
 # MERGE Company Properties 
@@ -277,4 +296,33 @@ def comp_c_cat():
         MATCH (company:Company {uuid:o.uuid})
         MATCH (cat:Category{uuid:category.uuid})
         MERGE (company)-[:CATEGORY]->(cat)
+    """)
+
+
+# MERGE ipo properties
+def ipo_prop():
+    return("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.ipo.item as ipo
+        WITH DISTINCT ipo
+
+        MERGE(i:Ipo{uuid:ipo.uuid})
+        SET i.went_public_on = ipo.properties.went_public_on,
+            i.type = ipo.type,
+            i.opening_valuation_usd = ipo.properties.opening_valuation_usd,
+            i.money_raised_usd = ipo.properties.money_raised_usd,
+            i.stock_exchange_symbol = ipo.properties.stock_exchange_symbol
+    """)
+
+# MATCH and Merge (comp)-[:IPO]->(ipo)
+def comp_i_ipo():
+    return("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.ipo.item as ipo
+
+        MATCH (company:Company {uuid:o.uuid})
+        MATCH (i:Ipo{uuid:ipo.uuid})
+        MERGE(company)-[:IPO]-(i)
         """)
