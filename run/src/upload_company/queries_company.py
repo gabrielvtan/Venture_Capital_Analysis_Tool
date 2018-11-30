@@ -5,8 +5,6 @@ def test_query():
         RETURN count(c) AS NodeCount
     """)
 
-        
-
 # CONSTRAINTS
 def const_comp():
     return("CREATE CONSTRAINT ON (c:Company) ASSERT c.uuid IS UNIQUE;")
