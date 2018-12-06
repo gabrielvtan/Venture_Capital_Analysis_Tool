@@ -7,7 +7,7 @@ import re
 import shutil
 
 from wrapper import Crunchbase
-import queries_company as q
+import queries_people as p
 
 from py2neo import Graph, authenticate
 graph = Graph()
@@ -24,16 +24,16 @@ def create_list_from_csv(file):
             permalink_list.append(row['permalink'])
     return permalink_list
 
-# itemlist takes a list of api endpoints - companies
-def write_json_company(file, error):
+# itemlist takes a list of api endpoints - people
+def write_json_person(file, error):
     permalink_list = create_list_from_csv(file)
     with open(error, 'r') as errorfile:
         error = json.load(errorfile)
         for end in permalink_list:
             with Crunchbase() as cb:
-                jsondata = cb.company(end)
+                jsondata = cb.person(end)
                 if jsondata != error:
-                    name = (re.search("(?<=\/organizations\/).*", end)).group(0)
+                    name = (re.search("(?<=\/people\/).*", end)).group(0)
                     print(name)
                     filename = name + '.json'
                     with open(filename, 'w') as outfile:
@@ -85,34 +85,32 @@ def index_to_neo():
     add_index(q.ind_fr())
 
 # Add the following queries for each json file passed 
-def company_to_neo(output):
-    write_to_db(q.comp_prop(),output)
-    write_to_db(q.fr_prop(),output)
-    write_to_db(q.fr_f_comp(),output)
-    write_to_db(q.investComp_prop(),output)
-    write_to_db(q.investComp_i_fr(),output)
-    write_to_db(q.found_prop(),output)
-    write_to_db(q.found_f_comp(),output)
-    write_to_db(q.board_prop(),output)
-    write_to_db(q.board_b_comp(),output)
-    write_to_db(q.comp_a_acquiree(),output)
-    write_to_db(q.head_prop(),output)
-    write_to_db(q.comp_h_head(),output)
-    write_to_db(q.cat_prop(),output)
-    write_to_db(q.comp_c_cat(),output)
-    write_to_db(q.ipo_prop(),output)
-    write_to_db(q.comp_i_ipo(),output)
+def person_to_neo(output):
+    write_to_db(p.person_prop(),output)
+    write_to_db(p.comp_prop(),output)
+    write_to_db(p.person_pa_comp(),output)
+    write_to_db(p.school_prop(),output)
+    write_to_db(p.school_s_comp(),output)
+    write_to_db(p.job_prop(),output)
+    write_to_db(p.person_j_comp(),output)
+    write_to_db(p.fr_prop(),output)
+    write_to_db(p.person_f_fr(),output)
+    write_to_db(p.invest_prop(),output)
+    write_to_db(p.fr_f_comp(),output)
+    write_to_db(p.head_prop(),output)
+    write_to_db(p.person_h_head(),output)
 
 # Once a json file has been written to the database then it is moved to the completed folder
-def list_of_company_to_neo():
+def list_of_people_to_neo():
     json_list = file_list()
     for json in json_list:
         print(json)
-        company_to_neo(json)
+        person_to_neo(json)
         move_file(json)
         print("FILED MOVED")
 
+
 def move_file(export):
-    source = "ENTER_CURRENT_FOUNDER_PATH/run/src/upload_company"
-    destination = "ENTER_CURRENT_FOUNDER_PATH/run/src/completed_companies"
+    source = "ENTER_CURRENT_FOUNDER_PATH/run/src/upload_person"
+    destination = "ENTER_CURRENT_FOUNDER_PATH/run/src/completed_people"
     shutil.move(os.path.join(source, export), os.path.join(destination, export))
