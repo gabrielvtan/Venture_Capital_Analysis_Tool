@@ -5,6 +5,7 @@ This repo is designed for users with access to the Crunchbase API to easily down
 The repo also provides a template for developing a simple website using [Flask](http://flask.pocoo.org/), [d3.js](https://d3js.org/), and [jQuery](https://jquery.com/)
 
 Below an example of the schema of the database:
+
 ![Schema](images/Schema.JPG)
 
 ## Dependencies
