@@ -57,21 +57,28 @@ def serialize_fundingRound(fundingRound):
 @app.route("/graph")
 def get_graph():
     db = get_db()
-    # results = db.run("MATCH (c:Company)<-[:FUNDED]-(fr:FundingRounds) "
-    #          "RETURN c.name as company, collect(fr.uuid) as rounds ")
-    results = db.run("""MATCH(c:Company)<-[f:FUNDED]-(fr:FundingRounds)
+    results = db.run("""MATCH(c:Company)<-[f:FUNDED]-(fr:FundingRounds)<-[:INVESTED_IN]-(o:Company)
             WHERE c.name = 'Facebook'
-            RETURN c as company, 
-            collect(fr) as rounds""")
+            WITH c, fr, {investor:o.name} AS o_investors
+            WITH c, {rounds: fr,  investors: collect(o_investors)} as fr_rounds
+            WITH {name:c.name, rounds: collect(fr_rounds)} as c_company
+            RETURN{company: collect(c_company)}""")
     nodes = []
     rels = []
     i = 0
+    
     for record in results:
-        nodes.append({"name": record["company"]["name"], "label": "company"})
+        nodes.append({"name": record[0]['company'][0]['name'], 
+            "label": "company"})
         target = i
         i += 1
-        for name in record['rounds']:
-            rounds = {"uuid": name["uuid"], "type": name["type"], "label": "rounds"}
+        z = 0
+
+        for fundingRound in record[0]['company'][z]['rounds']:
+            rounds = {
+                "uuid": fundingRound['rounds']["uuid"], 
+                "type": fundingRound['rounds']["type"], 
+                "label": "rounds"}
             try:
                 source = nodes.index(rounds)
             except ValueError:
@@ -79,17 +86,21 @@ def get_graph():
                 source = i
                 target_1 = i
                 i += 1
-            rels.append({"source": source, "target": target})
-        # for investor in record['investors']:
-        #     investors = {"name": investor["name"], "label": "investor"}
-        #     print(investors)
-        #     try:
-        #         source = nodes.index(investors)
-        #     except ValueError:
-        #         nodes.append(investors)
-        #         source = i
-        #         i += 1
-        #     rels.append({"source": source, "target": target_1})
+            rels.append({"source": source, "target": target, "action" : "FUNDED"})
+            print(fundingRound)
+            j = 0
+            for investor in fundingRound['investors']:
+                investors = {"name": investor['investor'], "label": "investor"}
+                try:
+                    source = nodes.index(investors)
+                except ValueError:
+                    nodes.append(investors)
+                    source = i
+                    i += 1
+                    z += 1
+                    j += 1
+                rels.append({"source": source, "target": target_1, "action": "INVESTED_IN"})
+                print(nodes)
     return Response(dumps({"nodes": nodes, "links": rels}),
                     mimetype="application/json")
 
