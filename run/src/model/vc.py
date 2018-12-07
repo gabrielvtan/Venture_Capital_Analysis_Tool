@@ -48,17 +48,15 @@ def serialize_company(company):
 
 def serialize_fundingRound(fundingRound):
     return {
-        'uuid': fundingRound['uuid'],
-        'type': fundingRound['type'],
-        'money_raised_usd': fundingRound['money_raised_usd'],
-        'announced_on': fundingRound['announced_on']
+        'type': fundingRound[0],
+        'money_raised_usd': fundingRound[1]
     }
 
 @app.route("/graph")
 def get_graph():
     db = get_db()
     results = db.run("""MATCH(c:Company)<-[f:FUNDED]-(fr:FundingRounds)<-[:INVESTED_IN]-(o:Company)
-            WHERE c.name = 'Facebook'
+            WHERE c.name = 'Airbnb'
             WITH c, fr, {investor:o.name} AS o_investors
             WITH c, {rounds: fr,  investors: collect(o_investors)} as fr_rounds
             WITH {name:c.name, rounds: collect(fr_rounds)} as c_company
@@ -97,7 +95,6 @@ def get_graph():
                     source = i
                     i += 1
                     z += 1
-                    j += 1
                 rels.append({"source": source, "target": target_1, "action": "INVESTED_IN"})
     return Response(dumps({"nodes": nodes, "links": rels}),
                     mimetype="application/json")
@@ -115,20 +112,20 @@ def get_search():
                  "WHERE c.name =~ {name} "
                  "RETURN c", {"name": "(?i).*" + q + ".*"}
         )
-        return Response(dumps([serialize_company(record['company']) for record in results]),
+        return Response(dumps([serialize_company(record[0]) for record in results]),
                         mimetype="application/json")
 
 
-@app.route("/company/<title>")
-def get_movie(title):
+@app.route("/company/<name>")
+def get_movie(name):
     db = get_db()
-    results = db.run("MATCH (c:Company {name:{name}}) "
-             "OPTIONAL MATCH (c)<-[r]-(fr:FundingRound) "
-             "RETURN company.name as name"
-             "LIMIT 1", {"name": name})
-
+    results = db.run(" MATCH (c:Company)<-[r]-(fr:FundingRounds) "
+            "WHERE c.name =~ {name} "
+            "RETURN c AS company, collect([fr.type, fr.money_raised_usd]) as rounds "
+            "LIMIT 1", {"name": name})
     result = results.single();
-    return Response(dumps({"name": result['name'],
+    return Response(dumps({"name": result['company']['name'],
+                           "image": result['company']['image'],
                            "rounds": [serialize_fundingRound(member)
                                     for member in result['rounds']]}),
                     mimetype="application/json")
