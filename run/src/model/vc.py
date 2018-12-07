@@ -87,7 +87,6 @@ def get_graph():
                 target_1 = i
                 i += 1
             rels.append({"source": source, "target": target, "action" : "FUNDED"})
-            print(fundingRound)
             j = 0
             for investor in fundingRound['investors']:
                 investors = {"name": investor['investor'], "label": "investor"}
@@ -100,7 +99,6 @@ def get_graph():
                     z += 1
                     j += 1
                 rels.append({"source": source, "target": target_1, "action": "INVESTED_IN"})
-                print(nodes)
     return Response(dumps({"nodes": nodes, "links": rels}),
                     mimetype="application/json")
 
@@ -121,7 +119,7 @@ def get_search():
                         mimetype="application/json")
 
 
-@app.route("/movie/<title>")
+@app.route("/company/<title>")
 def get_movie(title):
     db = get_db()
     results = db.run("MATCH (c:Company {name:{name}}) "
