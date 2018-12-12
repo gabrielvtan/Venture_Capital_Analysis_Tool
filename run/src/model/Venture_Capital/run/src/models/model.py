@@ -41,8 +41,9 @@ def serialize_company(company):
 
 def serialize_fundingRound(fundingRound):
     return {
-        'type': fundingRound[0],
-        'money_raised_usd': fundingRound[1]
+        'announced_on' : fundingRound[0],
+        'type': fundingRound[1],
+        'money_raised_usd': fundingRound[2]
     }
 
 def get_graph(results):
