@@ -1,0 +1,59 @@
+// 
+// sitemap.scss
+//
+
+.sitemap {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+        > ul {
+            margin-top: 1rem;
+            padding-left: 0;
+        }
+    }
+
+    li {
+        line-height: 2rem;
+        vertical-align: top;
+        list-style: none;
+        position: relative;
+
+        a {
+            text-decoration: none;
+            color: $gray-500;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:hover {
+                color: $gray-300;
+            }
+        }   
+    }
+    ul {
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+        padding-top: 10px;
+
+        li {
+            position: relative;
+
+            a {
+                margin-left: 2.75rem;
+            }
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                border-bottom: 1px solid $gray-700;
+                border-left: 1px solid $gray-700;
+                position: absolute;
+                top: -1rem;
+            }
+        }
+    }
+}

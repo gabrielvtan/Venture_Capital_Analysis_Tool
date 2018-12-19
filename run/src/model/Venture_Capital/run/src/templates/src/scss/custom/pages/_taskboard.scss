@@ -1,0 +1,32 @@
+// 
+// taskboard.scss
+//
+
+.taskList {
+    min-height: 40px;
+    margin-bottom: 0;
+    li {
+        background-color: lighten($gray-800,3%);
+        border: 1px solid $gray-700;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 3px;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+        .btn-sm {
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+    }
+    .checkbox {
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+}
+
+.task-placeholder {
+    border: 1px dashed lighten($gray-700,3%) !important;
+    background-color: $gray-700 !important;
+    padding: 20px;
+}

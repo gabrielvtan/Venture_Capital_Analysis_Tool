@@ -1,0 +1,90 @@
+// 
+// dropdown.scss
+//
+
+.dropdown-menu {
+    padding: 0.3rem;
+    animation-name: DropDownSlide;
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    margin: 0;
+    font-size: .875rem;
+    position: absolute;
+    z-index: 1000;
+    top: 100%!important;
+}
+
+.dropdown-menu-right {
+    right: 0!important;
+    left: auto!important;
+}
+
+.dropdown-menu[x-placement^=right],.dropdown-menu[x-placement^=top],.dropdown-menu[x-placement^=left]{
+    top: auto !important;
+    animation: none !important;
+}
+
+@keyframes DropDownSlide {
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+    0% {
+        -webkit-transform: translateY(40px);
+        transform: translateY(40px)
+    }
+}
+
+
+// Dropdown Large (Custom)
+.dropdown-lg {
+    width: $dropdown-lg-width;
+}
+
+@include media-breakpoint-down(sm) {
+    .dropdown-lg {
+        width: 200px !important;
+    }
+}
+
+// Dropdown Mega Menu
+
+.dropdown-mega {
+    position: static!important;
+}
+
+.dropdown-megamenu {
+    padding: 20px;
+    left: 20px !important;
+    right: 20px !important;
+    background-image: url("../images/megamenu-bg.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+.megamenu-list {
+    li {
+        padding: 5px 20px 5px 25px;
+        position: relative;
+
+        a {
+            color: $gray-500;
+
+            &:hover {
+                color: $gray-300;
+            }
+        }
+
+        &:before {
+            content: "\F142";
+            position: absolute;
+            left: 0;
+            font-family:"Material Design Icons";
+        }
+    }
+}
+
+// Dropdown divider
+.dropdown-divider {
+    border-color: lighten($gray-700,3%);
+}

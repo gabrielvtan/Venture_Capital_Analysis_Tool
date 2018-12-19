@@ -1,0 +1,28 @@
+// 
+// authentication.scss
+//
+
+.authentication-bg.enlarged {
+    min-height: 100px;
+}
+
+.bg-pattern {
+    background-image: url("../images/bg-pattern-2.png");
+    background-size: cover;
+}
+
+// authentication pages background
+body.authentication-bg {
+    background-size: cover;
+    background-position: center;
+}
+
+body.authentication-bg-pattern {
+    background-image: url("../images/bg-pattern.png");
+    background-color: $gray-700;
+}
+
+// Logout page
+.logout-icon {
+    width: 140px;
+}

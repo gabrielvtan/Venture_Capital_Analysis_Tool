@@ -1,0 +1,431 @@
+{% extends "structure.html" %}
+{% block viewport %}
+<!-- Main content -->
+<div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">DASHBOARD</a>
+            <!-- Form -->
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-lg-8" style="min-height: 300px">
+        <div class="container-fluid">
+            <div class="header-body">
+            
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            </div>    
+        </div>
+    </div>
+
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+                <!-- ============================================================== -->
+                <!-- Start Page Content here -->
+                <!-- ============================================================== -->
+    
+                <div class="content-page">
+                    <div class="content">
+
+                        <!-- Start Content-->
+                        <div class="container-fluid">
+    
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card shadow">
+                                        <div class="card-header bg-transparent">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h6 class="text-uppercase text-muted ls-1 mb-1">Funding</h6>
+                                                    <h2 class="mb-0">Venture Funding by Series Type</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="card-body">
+                                                <!-- Chart -->
+                                                <div class="chart">
+                                                    <div id="chart-1" class="chart-canvas"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col-->
+                                    
+                                <div class="col-lg-6">
+                                    <div class="card shadow">
+                                        <div class="card-header bg-transparent">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                                                    <h2 class="mb-0">Total orders</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="card-body">
+                                                <!-- Chart -->
+                                                <div class="chart">
+                                                    <div id="chart-2" class="chart-canvas"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col-->
+                            </div>
+                            <!-- end row -->
+
+                            <p></p>
+
+                            <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="card shadow">
+                                            <div class="card-header bg-transparent">
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <h6 class="text-uppercase text-muted ls-1 mb-1">Funding</h6>
+                                                        <h2 class="mb-0">Deal Value and Count</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="card-body">
+                                                    <!-- Chart -->
+                                                    <div class="chart">
+                                                    <div id="chart-3" class="chart-canvas"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col-->
+                                        
+                                    <div class="col-lg-6">
+                                        <div class="card shadow">
+                                            <div class="card-header bg-transparent">
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <h6 class="text-uppercase text-muted ls-1 mb-1">IPO</h6>
+                                                        <h2 class="mb-0">Money Raised from IPO Exits</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="card-body">
+                                                    <!-- Chart -->
+                                                    <div class="chart">
+                                                        <div id="chart-4" class="chart-canvas"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col-->
+                                </div>
+                                <!-- end row -->
+
+                        </div> <!-- container -->
+
+                    </div> <!-- content -->
+                </div>
+    
+                <!-- ============================================================== -->
+                <!-- End Page content -->
+                <!-- ============================================================== -->
+    
+    
+        </div>
+        <!-- END wrapper -->
+
+
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script type="text/javascript"> 
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bar',
+                stacked: true,
+                toolbar: {
+                    show: true
+                },
+                zoom: {
+                    enabled: true
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            dataLabels:{
+                enabled: false,
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                },
+            },
+            series: [{
+                name: 'Unlabeled',
+                data: [28.502598700, 26.892308476, 34.114245590, 43.629001388, 38.360639652, 44.751951325, 72.170060184, 93.857165388, 84.935336481, 101.905163568, 111.367006237]
+            },{
+                name: 'Series A-B',
+                data: [3.266745199, 1.406891408, 2.207587766, 2.323402912, 2.120261843, 3.029124674, 5.891768299, 12.330980287, 24.223251111, 27.819228927, 46.736950534]
+            },{
+                name: 'Series C-J',
+                data: [3.438601009, 2.024277372, 2.733638061, 4.379815468, 2.924433891, 4.207916664, 12.674035300, 23.018213691, 24.641089502, 29.408105891, 64.730938968]
+            }],
+            labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+            xaxis: {
+                type: 'category',
+                labels: {datetimeFormatter: {
+                        year: 'yyyy',
+                    },
+                },
+            },
+            yaxis: {
+                title: {
+                    text: 'Total Deal Value ($B)',
+                },
+            },
+            legend: {
+                horizontalAlign: 'right',
+            },
+            fill: {
+                opacity: 1
+            },
+        }
+
+       var chart = new ApexCharts(
+            document.querySelector("#chart-1"),
+            options
+        );
+        
+        chart.render();
+</script>
+
+<script type="text/javascript">
+    var options = {
+      chart: {
+        height: 350,
+        type: 'line',
+        stacked: false,
+      },
+      stroke: {
+        width: [0, 2, 5],
+        curve: 'smooth'
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: '50%'
+        }
+      },
+      series: [{
+        name: 'TEAM A',
+        type: 'column',
+        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+      }, {
+        name: 'TEAM B',
+        type: 'area',
+        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+      }, {
+        name: 'TEAM C',
+        type: 'line',
+        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
+      }],
+      fill: {
+        opacity: [0.85,0.25,1],
+                gradient: {
+                    inverseColors: false,
+                    shade: 'light',
+                    type: "vertical",
+                    opacityFrom: 0.85,
+                    opacityTo: 0.55,
+                    stops: [0, 100, 100, 100]
+                }
+      },
+      labels: ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
+      markers: {
+        size: 0
+      },
+      xaxis: {
+        type:'datetime'
+      },
+      yaxis: {
+        title: {
+          text: 'Points',
+        },
+        min: 0
+      },
+      legend: {
+            horizontalAlign: 'right',
+        },
+      tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+          formatter: function (y) {
+            if(typeof y !== "undefined") {
+              return  y.toFixed(0) + " points";
+            }
+            return y;
+            
+          }
+        }
+      }
+
+    }
+
+    var chart = new ApexCharts(
+      document.querySelector("#chart-2"),
+      options
+    );
+
+    chart.render();
+
+    
+</script>
+
+<script type="text/javascript">
+    var options = {
+      chart: {
+        height: 350,
+        type: 'line',
+      },
+      series: [{
+        name: 'Deal Value ($B)',
+        type: 'column',
+        data: [51.685864580, 50.768052971, 74.832675043, 75.203663019, 77.273099844, 115.040932051, 226.195870789, 213.281841738, 302.905387658, 433.504835650, 527.059560333]
+      }, {
+        name: 'Deal Count',
+        type: 'line',
+        data: [5235, 6990, 9509, 11704, 14649, 19727, 25757, 28481, 29089, 28720, 24445]
+      }],
+      stroke: {
+        width: [0, 4]
+      },
+      legend: {
+        horizontalAlign: 'right',
+      },
+      labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017','2018'],
+      xaxis: {
+        type: 'category',
+        labels: {datetimeFormatter: {
+                year: 'yyyy',
+          },
+        },
+      },
+      yaxis: [{
+        title: {
+          text: 'Total Deal Value ($B)',
+        },
+      }, {
+        opposite: true,
+        title: {
+          text: 'Number of Deals Closed'
+        }
+      }]
+
+    }
+
+    var chart = new ApexCharts(
+      document.querySelector("#chart-3"),
+      options
+    );
+
+    chart.render();
+</script>
+
+<script type="text/javascript"> 
+    var options = {
+      chart: {
+        height: 350,
+        type: 'line',
+        stacked: false,
+      },
+      stroke: {
+        width: [0, 2, 5],
+        curve: 'smooth'
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: '50%'
+        }
+      },
+      series: [{
+        name: 'TEAM A',
+        type: 'column',
+        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+      }, {
+        name: 'TEAM B',
+        type: 'area',
+        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+      }],
+      fill: {
+        opacity: [0.85,0.25,1],
+                gradient: {
+                    inverseColors: false,
+                    shade: 'light',
+                    type: "vertical",
+                    opacityFrom: 0.85,
+                    opacityTo: 0.55,
+                    stops: [0, 100, 100, 100]
+                }
+      },
+      labels: ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
+      markers: {
+        size: 0
+      },
+      xaxis: {
+        type:'datetime'
+      },
+      yaxis: {
+        title: {
+          text: 'Points',
+        },
+        min: 0
+      },
+      legend: {
+            horizontalAlign: 'right',
+        },
+      tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+          formatter: function (y) {
+            if(typeof y !== "undefined") {
+              return  y.toFixed(0) + " points";
+            }
+            return y;
+            
+          }
+        }
+      }
+
+    }
+
+        var chart = new ApexCharts(
+            document.querySelector("#chart-4"),
+            options
+        );
+
+        chart.render();
+       
+</script>
+
+{% endblock viewport %}

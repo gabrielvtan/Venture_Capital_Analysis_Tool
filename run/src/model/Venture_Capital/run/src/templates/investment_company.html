@@ -1,0 +1,603 @@
+{% extends "structure.html" %}
+{% block viewport %}
+        <!-- Main content -->
+        <div class="main-content">
+          <!-- Top navbar -->
+          <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+            <div class="container-fluid">
+              <!-- Brand -->
+              <a class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Company Search</a>
+              <!-- Form -->
+              <form role = "search" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" id = "companysearch">
+                <div class="form-group mb-0">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                      <input type = "text" class="form-control" placeholder="Search" type="text" name = "companysearch">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </nav>
+          <!-- Header -->
+          <div class="header bg-gradient-primary pb-8 pt-5 pt-lg-8" style="min-height: 500px">
+            <div class="container-fluid">
+              <div class="header-body">
+                <!-- Card stats -->
+                <div class="row">
+
+                  <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                            <span class="h2 font-weight-bold mb-0">350,897</span>
+                          </div>
+                          <div class="col-auto">
+                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                              <i class="fas fa-chart-bar"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-muted text-sm">
+                          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                          <span class="text-nowrap">Since last month</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                            <span class="h2 font-weight-bold mb-0">2,356</span>
+                          </div>
+                          <div class="col-auto">
+                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                              <i class="fas fa-chart-pie"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-muted text-sm">
+                          <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                          <span class="text-nowrap">Since last week</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                            <span class="h2 font-weight-bold mb-0">924</span>
+                          </div>
+                          <div class="col-auto">
+                            <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                              <i class="fas fa-users"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-muted text-sm">
+                          <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                          <span class="text-nowrap">Since yesterday</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                            <span class="h2 font-weight-bold mb-0">49,65%</span>
+                          </div>
+                          <div class="col-auto">
+                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                              <i class="fas fa-percent"></i>
+                            </div>
+                          </div>
+                          </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                              <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                              <span class="text-nowrap">Since last month</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+<!-- Page content -->
+    <div class="container-fluid mt--7">
+        <div class="row">
+          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            <div class="card bg-default shadow">
+
+              <div class="row justify-content-center">
+                <div class="col-lg-3 order-lg-2">
+                  <div class="card-profile-image">
+                    <img src="" class="well" id="poster" width="150" height="150"/>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body pt-0 pt-md-4">
+                <div class="text-center">
+                  <h3>
+                    - <span class="font-weight-light"> - </span>
+                  </h3>
+                  <div class="h5 font-weight-300">
+                    <i class="ni location_pin mr-2"></i> -
+                  </div>
+                  <div class="h5 mt-4">
+                    <i class="ni business_briefcase-24 mr-2"></i> - 
+                  </div>
+                  <div>
+                    <span class="heading" id ="name"></span>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                        <div class="card-profile-stats d-flex justify-content-around mt-md-2">
+                        <div>
+                            <span class="heading">Stock Symbol</span>
+                            <span class="description" id ="stock_symbol"></span>
+                        </div>
+                        <div>
+                            <span class="heading">City</span>
+                            <span class="description" id="city"></span>
+                        </div>
+                        <div>
+                            <span class="heading">Primary Role</span>
+                            <span class="description" id="primary_role"></span>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                        <div class="col">
+                            <div class="card-profile-stats d-flex justify-content-around mt-md-2">
+                            <div>
+                                <span class="heading">Total Funding</span>
+                                <span class="description" id="raised"></span>
+                            </div>
+                            <div>
+                                <span class="heading">Opening Valuation</span>
+                                <span class="description" id="opening_valuation"></span>
+                            </div>
+                            <div>
+                                <span class="heading">Money Raised</span>
+                                <span class="description" id ="money_raised_usd"></span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card-profile-stats d-flex justify-content-around mt-md-2">
+                            <div>
+                                <span class="heading">Number of Investments</span>
+                                <span class="description" id ="number_of_investments"></span>
+                            </div>                            
+                            <div>
+                                <span class="heading">Founded On</span>
+                                <span class="description" id="founded_on"></span>
+                            </div>
+                            <div>
+                                <span class="heading">Went Public On</span>
+                                <span class="description" id="went_public_on"></span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card-profile-stats d-flex justify-content-around mt-md-2">
+                            <div>
+                                <span class="heading">Categories</span>
+                                <span class="description" id="categories"></span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                  <hr class="my-4" />
+                  <p id ="description"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+     
+
+
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-default shadow">
+
+                    <div class="card-header bg-transparent border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                            <h3 class="text-white mb-0">Company Details</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                    <h6 class="heading-small text-muted mb-4">Funding Rounds</h6>
+                        <div class="pl-lg-4">
+                            <div class="col-md-8 col-sm-8">
+                                <ul id="rounds" class="description text-white">
+                                </ul>
+                            </div>
+                        </div>
+
+                  <hr class="my-4" />
+                  <!-- Investors -->
+                  <h6 class="heading-small text-muted mb-4">Competitors</h6>
+                  <div class="pl-lg-4">
+                    
+                  </div>
+
+                  <hr class="my-4" />
+                  <!-- Description -->
+                  <h6 class="heading-small text-muted mb-4">Important People</h6>
+                  <div class="pl-lg-4">
+
+                  </div>
+
+                </div>
+            </div>
+              <!-- graph -->
+            <p></p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow border-0">
+                        <div id="graph" style="height: 800px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+<style type="text/css">
+    .node circle {
+    cursor: pointer;
+    stroke: #3182bd;
+    stroke-width: 1.5px;
+    }
+
+    .node text {
+    font: 14px sans-serif;
+    stroke: #0d2c42;
+    pointer-events: none;
+    text-anchor: middle;
+    }
+
+    .link {
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: 1.5px;
+    }
+
+    .node.company {
+        fill: rgb(187, 53, 53); 
+    }
+
+    .node.rounds {
+        fill: rgb(28, 194, 194); 
+    }
+
+    .node.investor {
+        fill: rgb(72, 201, 89); 
+    }
+
+    .node.founders {
+        fill: pink;
+    }
+
+    .node.boardMembers {
+        fill:orange;
+    }
+
+    .node.acquisitions {
+        fill: purple;
+    }
+
+    .node.hide {
+        fill: white;
+        stroke: white;
+    }
+
+</style>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+<script src="http://d3js.org/d3-selection-multi.v1.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        function numberWithCommas(x) {
+            if (!x) return;
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+        function showCompany(name) {
+            $.get("/company/" + encodeURIComponent(name),
+                    function (data) {
+                        if (!data) return ;
+                        var $list = $("#rounds").empty();
+                        data.rounds.forEach(function (round) {
+                            $list.append($("<li>" + round.announced_on + " | " + round.type + " amount = " +numberWithCommas(round.money_raised_usd) + "</li>"));
+                        });
+                    }, "json");
+            return false;
+        }
+        
+        function showGraph(name) {
+            $.get("/graph/" +encodeURIComponent(name),
+                    function (data) {
+                        if (!data) return;
+                            var width = 800, 
+                                height = 800,
+                                min_zoom = 0.1,
+                                max_zoom = 7,
+                                zoom = d3.behavior.zoom().scaleExtent([min_zoom,max_zoom]),
+                                root;
+
+                            var force = d3.layout.force()
+                                    .gravity(.05)
+                                    .charge(-150)
+                                    .linkDistance(100)
+                                    .friction(0.9)
+                                    .charge(-400)
+                                    .size([width, height])
+                                    .on("tick",tick);
+
+                            var svg = d3.select("#graph").append("svg")
+                                    .attr("width", "100%")
+                                    .attr("height", "100%");
+
+                            svg.append('defs').append('marker')
+                                .attrs({'id':'arrowhead',
+                                    'viewBox':'-0 -5 10 10',
+                                    'refX':13,
+                                    'refY':0,
+                                    'orient':'auto',
+                                    'markerWidth':11,
+                                    'markerHeight':13,
+                                    'xoverflow':'visible'})
+                                .append('svg:path')
+                                .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+                                .attr('fill', '#999')
+                                .style('stroke','none');
+
+                            var link = svg.selectAll(".link"),
+                                node = svg.selectAll(".node");
+
+                            root = data;
+                            update();
+
+                            function update() {
+                                var nodes = flatten(root),
+                                    links = root.links;
+
+                                console.log(nodes)
+                                console.log(links)
+                                // Restart the force layout.
+                                force
+                                    .nodes(nodes)
+                                    .links(links)
+                                    .start();
+
+                                // Update the links...
+                                link = link.data(links);
+
+                                // Exit any old links
+                                link.exit().remove();
+
+                                // Enter any new links
+                                link.enter().append("line")
+                                    .attr("class", "link")
+                                    .attr('marker-end', 'url(#arrowhead)');
+                                
+                                // Select edge paths
+                                edgepaths = svg.selectAll(".edgepath")
+                                    .data(links)
+                                    .enter()
+                                    .append('path')
+                                    .attrs({
+                                        'class': 'edgepath',
+                                        'fill-opacity': 0,
+                                        'stroke-opacity': 0,
+                                        'id': function (d, i) {return 'edgepath' + i}
+                                    })
+                                    .style("pointer-events", "none");
+                                
+                                // Add edge labels
+                                edgelabels = svg.selectAll(".edgelabel")
+                                    .data(links)
+                                    .enter()
+                                    .append('text')
+                                    .style("pointer-events", "none")
+                                    .attrs({
+                                        'class': 'edgelabel',
+                                        'id': function (d, i) {return 'edgelabel' + i},
+                                        'font-size': 10,
+                                        'fill': '#aaa'
+                                    });
+
+                                edgelabels.append('textPath')
+                                    .attr('xlink:href', function (d, i) {return '#edgepath' + i})
+                                    .style("text-anchor", "middle")
+                                    .style("pointer-events", "none")
+                                    .attr("startOffset", "50%")
+                                    .text(function (d) {return d.action});
+
+                                
+                                // Update the nodes...
+                                node = node.data(nodes, function(d) {return d.id;});
+
+                                node.exit().remove();
+                                
+
+                                var nodeEnter = node.enter().append("g")
+                                    .attr("class", "node")
+                                    .attr("cx", function(d) { return d.x; })
+                                    .attr("cy", function(d) { return d.y; })
+                                    .on("click", click)
+                                    .call(force.drag);
+
+                                nodeEnter.append("circle")
+                                    .attr("r", 20);
+
+                                nodeEnter.append("text")
+                                    .attr("dy", ".50em")
+                                    .text(function (d) { return d.name; });
+
+                                nodeEnter.append("text")
+                                    .attr("dy", ".50em")
+                                    .text(function (d) { return d.type; });
+
+                                nodeEnter.append("text")
+                                    .attr("dy", ".50em")
+                                    .text(function (d) { return d.permalink; });    
+
+                                node.select("circle")
+                                    .attr("class", function (d) { return "node "+ d.label })
+
+                            }
+
+                            // force feed algo ticks
+                            function tick() {
+                                link.attr("x1", function(d) { return d.source.x; })
+                                    .attr("y1", function(d) { return d.source.y; })
+                                    .attr("x2", function(d) { return d.target.x; })
+                                    .attr("y2", function(d) { return d.target.y; });
+                                    
+                                node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+                                    .attr("cx", function(d) { return d.x; })
+                                    .attr("cy", function(d) { return d.y; });
+
+                                edgepaths.attr('d', function (d) {
+                                    return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
+                                });
+
+                                edgelabels.attr('transform', function (d) {
+                                    if (d.target.x < d.source.x) {
+                                        var bbox = this.getBBox();
+
+                                        rx = bbox.x + bbox.width / 2;
+                                        ry = bbox.y + bbox.height / 2;
+                                        return 'rotate(180 ' + rx + ' ' + ry + ')';
+                                    }
+                                    else {
+                                        return 'rotate(0)';
+                                    }
+                                });
+                            }
+
+                            function color(d) {
+                                return d._children ? "#3182bd" // collapsed package
+                                    : d.children ? "#c6dbef" // expanded package
+                                    : "#fd8d3c"; // leaf node
+                            }
+
+                            // Toggle children on click.
+                            function click(d) {
+                                if (d3.event.defaultPrevented) return; // ignore drag
+                                if (d.children) {
+                                    d._children = d.children;
+                                    d.children = null;
+                                } else {
+                                    d.children = d._children;
+                                    d._children = null;
+                                }
+                                update();
+                            }
+
+                            // Returns a list of all nodes under the root.
+                            function flatten(root) {
+                                var nodes = [], i = 0;
+
+                                function recurse(node) {
+                                    if (node.nodes) node.nodes.forEach(recurse);
+                                    if (!node.id) node.id = ++i;
+                                    nodes.push(node);
+                                }
+
+                                recurse(root);
+                                return nodes;
+                            }
+
+                            function dragstarted(d) {
+                                if (!d3.event.active) simulation.alphaTarget(0.3).restart()
+                                d.fx = d.x;
+                                d.fy = d.y;
+                            }
+
+                            function dragged(d) {
+                                d.fx = d3.event.x;
+                                d.fy = d3.event.y;
+                            }
+
+                            function resize() {
+                                var width = window.innerWidth, height = window.innerHeight;
+                                svg.attr("width", width).attr("height", height);
+                                
+                                force.size([force.size()[0]+(width-w)/zoom.scale(),force.size()[1]+(height-h)/zoom.scale()]).resume();
+                                w = width;
+                                h = height;
+                            }
+                            
+
+                    }, "json");
+            return false;
+        }
+
+        function search() {
+            var query=$("#companysearch").find("input[name=companysearch]").val();
+            $.get("/companysearch?q=" + encodeURIComponent(query),
+                    function (data) {
+                        if (!data) return;
+                            $("#name").text(data[0].name)
+                            $("#description").text(data[0].description)
+                            $("#raised").text(data[0].total_funding_usd.toLocaleString())
+                            $("#categories").text(data[0].categories)
+                            $("#primary_role").text(data[0].primary_role)
+                            $("#founded_on").text(data[0].founded_on)
+                            $("#poster").attr("src", data[0].image)
+                            $("#stock_symbol").text(data[0].stock_symbol)
+                            $("#money_raised_usd").text(data[0].money_raised_usd.toLocaleString())
+                            $("#city").text(data[0].city)
+                            $("#opening_valuation").text(data[0].opening_valuation_usd.toLocaleString())
+                            $("#went_public_on").text(data[0].went_public_on)
+                            $("#number_of_investments").text(data[0].number_of_investments)
+                        showCompany(data[0].name);
+                        showGraph(data[0].name);
+                    }, "json");
+            return false;
+        }
+
+        $("#companysearch").submit(search);
+        search();
+    })
+</script>
+
+
+{% endblock viewport %}
