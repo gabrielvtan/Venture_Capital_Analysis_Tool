@@ -51,6 +51,13 @@ def serialize_person(person):
         'bio': person['bio']
     }
 
+def serialize_headquarter(headquarter):
+    return {
+        'city': headquarter['city'],
+        'region': headquarter['region'],
+        'country': headquarter['country']
+    }
+
 def serialize_fundingRound(fundingRound):
     return {
         'announced_on' : fundingRound[0],
@@ -62,6 +69,20 @@ def serialize_competitors(competitor):
     return {
         'competitor': competitor[0],
         'categories': competitor[1]
+    }
+
+def serialize_investment_competitors(competitor):
+    return {
+        'competitor': competitor[0],
+        'investments': competitor[1],
+        'categories': competitor[2]
+    }
+
+def serialize_investments(investment):
+    return {
+        'name': investment[0],
+        'date': investment[1],
+        'money': investment[2]
     }
 
 def serialize_acquisitions(acquisition):
@@ -88,6 +109,19 @@ def serialize_jobs(jobs):
         'company_name': jobs [2],
         'is_current': jobs[3],
         'ended_on': jobs[4]
+    }
+
+def serialize_head_companies(city):
+    return {
+        'company': city[0],
+        'categories': city[1],
+        'money': city[2]        
+    }
+
+def serialize_category_funding(category):
+    return {
+        'category': category[0],
+        'money': category[1]
     }
 
 def get_company_graph(results, founders, board, acquired):
@@ -161,6 +195,81 @@ def get_company_graph(results, founders, board, acquired):
                 source = i
                 i += 1
             rels.append({"source": source, "target": target, "action" : "ACQUIRED"})
+
+    return Response(dumps({"nodes": nodes, "links": rels, "label": "hide"}),
+                    mimetype="application/json")
+
+def get_investment_company_graph(results, founders, board, acquired):
+    nodes = []
+    rels = []
+    i = 0
+    for record in results:
+        nodes.append({"name": record[0]['company'][0]['name'], 
+            "label": "company"})
+        source = i
+        i += 1
+        z = 0
+        for fundingRound in record[0]['company'][z]['rounds']:
+            rounds = {
+                "uuid": fundingRound['rounds']["uuid"], 
+                "type": fundingRound['rounds']["type"], 
+                "label": "rounds"}
+            try:
+                target = nodes.index(rounds)
+            except ValueError:
+                nodes.append(rounds)
+                target = i
+                source_1 = i
+                i += 1
+            rels.append({"source": source, "target": target, "action" : "FUNDED"})
+            for investor in fundingRound['investors']:
+                investors = {"name": investor['investor'], "label": "investor"}
+                try:
+                    target = nodes.index(investors)
+                except ValueError:
+                    nodes.append(investors)
+                    target = i
+                    i += 1
+                    z += 1
+                rels.append({"source": source_1, "target": target, "action": "INVESTED_IN"})
+    
+    fd = []
+    for record in founders:
+        for founder in record['founders']:
+            founders = {"permalink": founder, "label": "founders"}
+            fd.append(founder)
+            try:
+                source = nodes.index(founders)
+            except ValueError:
+                nodes.append(founders)
+                source = i
+                i += 1
+            rels.append({"source": source, "target": 0, "action" : "FOUNDED"})
+
+    for record in board:
+        for member in record['board']:
+            if member in fd:
+                pass
+            else:
+                members = {"permalink": member, "label": "boardMembers"}
+                try:
+                    source = nodes.index(members)
+                except ValueError:
+                    nodes.append(members)
+                    source = i
+                    i += 1
+                rels.append({"source": source, "target": 0, "action" : "BOARDMEMBER"})
+    
+    for record in acquired:
+        for acquisition in record['acquisition']:
+            acquisitions = {"name": acquisition, "label": "acquisitions"}
+            try:
+                source = nodes.index(acquisitions)
+            except ValueError:
+                nodes.append(acquisitions)
+                source = i
+                i += 1
+            rels.append({"source": source, "target": 0, "action" : "ACQUIRED"})
 
     return Response(dumps({"nodes": nodes, "links": rels, "label": "hide"}),
                     mimetype="application/json")

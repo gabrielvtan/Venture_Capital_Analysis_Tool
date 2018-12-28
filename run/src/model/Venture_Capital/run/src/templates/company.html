@@ -55,7 +55,7 @@
                     <i class="ni business_briefcase-24 mr-2"></i> - 
                   </div>
                   <div>
-                    <span class="heading" id ="name"></span>
+                    <h1 class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block" id ="name"></h1>
                   </div>
                   <div class="row">
                     <div class="col">
@@ -145,7 +145,7 @@
                     <div class="card-body">
                     <h6 class="heading-small text-muted mb-4">Funding Rounds</h6>
                         <div class="pl-lg-4">
-                            <div class="col-md-10 col-sm-10">
+                            <div class="col-md-12 col-sm-12">
                                 <ul id="rounds" class="description text-white">
                                 </ul>
                             </div>
@@ -155,7 +155,7 @@
                   <!-- Investors -->
                   <h6 class="heading-small text-muted mb-4">Competitors</h6>
                   <div class="pl-lg-4">
-                    <div class="col-md-10 col-sm-10">
+                    <div class="col-md-12 col-sm-12">
                         <ul id="competitors" class="description text-white">
                         </ul>
                     </div>
@@ -165,7 +165,7 @@
                   <!-- Description -->
                   <h6 class="heading-small text-muted mb-4">Acquisitions</h6>
                   <div class="pl-lg-4">
-                    <div class="col-md-10 col-sm-10">
+                    <div class="col-md-12 col-sm-12">
                         <ul id="acquisitions" class="description text-white">
                         </ul>
                     </div>
@@ -516,6 +516,7 @@
             var query=$("#companysearch").find("input[name=companysearch]").val();
             $.get("/companysearch?q=" + encodeURIComponent(query),
                     function (data) {
+                        console.log(data)
                         if (!data) return;
                             $("#name").text(data[0].name)
                             $("#description").text(data[0].description)

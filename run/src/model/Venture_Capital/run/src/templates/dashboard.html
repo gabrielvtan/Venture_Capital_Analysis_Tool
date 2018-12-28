@@ -54,7 +54,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col">
                                                     <h6 class="text-uppercase text-muted ls-1 mb-1">Funding</h6>
-                                                    <h2 class="mb-0">Venture Funding by Series Type</h2>
+                                                    <h2 class="mb-0">Total Funding and Deal Count</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,8 +72,8 @@
                                         <div class="card-header bg-transparent">
                                             <div class="row align-items-center">
                                                 <div class="col">
-                                                    <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                                    <h2 class="mb-0">Total orders</h2>
+                                                    <h6 class="text-uppercase text-muted ls-1 mb-1">Funding</h6>
+                                                    <h2 class="mb-0">Venture Funding by Series Type</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,8 +96,8 @@
                                             <div class="card-header bg-transparent">
                                                 <div class="row align-items-center">
                                                     <div class="col">
-                                                        <h6 class="text-uppercase text-muted ls-1 mb-1">Funding</h6>
-                                                        <h2 class="mb-0">Deal Value and Count</h2>
+                                                        <h6 class="text-uppercase text-muted ls-1 mb-1">IPO</h6>
+                                                        <h2 class="mb-0">Money Raised from IPO Exits</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,7 +116,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col">
                                                         <h6 class="text-uppercase text-muted ls-1 mb-1">IPO</h6>
-                                                        <h2 class="mb-0">Money Raised from IPO Exits</h2>
+                                                        <h2 class="mb-0">2018 Top IPO Exits by Category ($B)</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +130,74 @@
                                         </div> <!-- end col-->
                                 </div>
                                 <!-- end row -->
+                                <p></p>
 
+                                <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="card shadow">
+                                                <div class="card-header bg-transparent">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h6 class="text-uppercase text-muted ls-1 mb-1">Headquarters</h6>
+                                                            <h2 class="mb-0">2018 Money Raised by City</h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="card-body">
+                                                        <!-- Chart -->
+                                                        <div class="chart">
+                                                        <div id="chart-5" class="chart-canvas"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col-->
+                                            
+                                        <div class="col-lg-6">
+                                            <div class="card shadow">
+                                                <div class="card-header bg-transparent">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h6 class="text-uppercase text-muted ls-1 mb-1">Companies</h6>
+                                                            <h2 class="mb-0">2018 Money Raised by Company ($B)</h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="card-body">
+                                                        <!-- Chart -->
+                                                        <div class="chart">
+                                                            <div id="chart-6" class="chart-canvas"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col-->
+                                    </div>
+                                    <!-- end row -->
+
+                                    <p></p>
+
+                                    <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="card shadow">
+                                                    <div class="card-header bg-transparent">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <h6 class="text-uppercase text-muted ls-1 mb-1">Investment Company</h6>
+                                                                <h2 class="mb-0">2018 Number of Funding Rounds Participated In</h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <div class="card-body">
+                                                            <!-- Chart -->
+                                                            <div class="chart">
+                                                            <div id="chart-7" class="chart-canvas"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end col-->
+                                                
+
+                                        </div>
+                                        <!-- end row -->
                         </div> <!-- container -->
 
                     </div> <!-- content -->
@@ -148,159 +215,6 @@
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-<script type="text/javascript"> 
-        var options = {
-            chart: {
-                height: 350,
-                type: 'bar',
-                stacked: true,
-                toolbar: {
-                    show: true
-                },
-                zoom: {
-                    enabled: true
-                }
-            },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    legend: {
-                        position: 'bottom',
-                        offsetX: -10,
-                        offsetY: 0
-                    }
-                }
-            }],
-            dataLabels:{
-                enabled: false,
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                },
-            },
-            series: [{
-                name: 'Unlabeled',
-                data: [28.502598700, 26.892308476, 34.114245590, 43.629001388, 38.360639652, 44.751951325, 72.170060184, 93.857165388, 84.935336481, 101.905163568, 111.367006237]
-            },{
-                name: 'Series A-B',
-                data: [3.266745199, 1.406891408, 2.207587766, 2.323402912, 2.120261843, 3.029124674, 5.891768299, 12.330980287, 24.223251111, 27.819228927, 46.736950534]
-            },{
-                name: 'Series C-J',
-                data: [3.438601009, 2.024277372, 2.733638061, 4.379815468, 2.924433891, 4.207916664, 12.674035300, 23.018213691, 24.641089502, 29.408105891, 64.730938968]
-            }],
-            labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
-            xaxis: {
-                type: 'category',
-                labels: {datetimeFormatter: {
-                        year: 'yyyy',
-                    },
-                },
-            },
-            yaxis: {
-                title: {
-                    text: 'Total Deal Value ($B)',
-                },
-            },
-            legend: {
-                horizontalAlign: 'right',
-            },
-            fill: {
-                opacity: 1
-            },
-        }
-
-       var chart = new ApexCharts(
-            document.querySelector("#chart-1"),
-            options
-        );
-        
-        chart.render();
-</script>
-
-<script type="text/javascript">
-    var options = {
-      chart: {
-        height: 350,
-        type: 'line',
-        stacked: false,
-      },
-      stroke: {
-        width: [0, 2, 5],
-        curve: 'smooth'
-      },
-      plotOptions: {
-        bar: {
-          columnWidth: '50%'
-        }
-      },
-      series: [{
-        name: 'TEAM A',
-        type: 'column',
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
-      }, {
-        name: 'TEAM B',
-        type: 'area',
-        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
-      }, {
-        name: 'TEAM C',
-        type: 'line',
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
-      }],
-      fill: {
-        opacity: [0.85,0.25,1],
-                gradient: {
-                    inverseColors: false,
-                    shade: 'light',
-                    type: "vertical",
-                    opacityFrom: 0.85,
-                    opacityTo: 0.55,
-                    stops: [0, 100, 100, 100]
-                }
-      },
-      labels: ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
-      markers: {
-        size: 0
-      },
-      xaxis: {
-        type:'datetime'
-      },
-      yaxis: {
-        title: {
-          text: 'Points',
-        },
-        min: 0
-      },
-      legend: {
-            horizontalAlign: 'right',
-        },
-      tooltip: {
-        shared: true,
-        intersect: false,
-        y: {
-          formatter: function (y) {
-            if(typeof y !== "undefined") {
-              return  y.toFixed(0) + " points";
-            }
-            return y;
-            
-          }
-        }
-      }
-
-    }
-
-    var chart = new ApexCharts(
-      document.querySelector("#chart-2"),
-      options
-    );
-
-    chart.render();
-
-    
-</script>
-
 <script type="text/javascript">
     var options = {
       chart: {
@@ -340,11 +254,10 @@
           text: 'Number of Deals Closed'
         }
       }]
-
     }
 
     var chart = new ApexCharts(
-      document.querySelector("#chart-3"),
+      document.querySelector("#chart-1"),
       options
     );
 
@@ -352,6 +265,89 @@
 </script>
 
 <script type="text/javascript"> 
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bar',
+                toolbar: {
+                    show: true
+                },
+                zoom: {
+                    enabled: true
+                }
+            },
+
+            dataLabels:{
+                enabled: false,
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                },
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            series: [
+            //     {
+            //     name: 'Unlabeled',
+            //     type: 'bar',
+            //     data: [27.501592176, 25.745062792, 32.270111273, 39.369177445, 35.160055210, 39.716113429, 64.773940002, 82.408129522, 79.607983014, 92.666233567, 103.398618071]
+            // },
+            {
+                name: 'Series A',
+                type: 'bar',
+                data: [1.082528745, 0.954617770, 0.997929892, 1.478787446, 1.107087108, 2.430618991, 3.515179316, 6.739224644, 10.797444771, 12.422642733, 21.592348834]
+            },{
+                name: 'Series B',
+                type: 'bar',
+                data: [2.459958317, 1.102567867, 2.175091114, 2.571607821, 1.789383763, 2.883654785, 5.968557791, 9.953337055, 17.266930655, 19.164046172, 27.722859229]
+            },{
+                name: 'Series C',
+                type: 'bar',
+                data: [1.772825426, 0.997826638, 2.056011532, 3.568917055, 2.348207004, 2.627794629, 5.620484018, 8.407486756, 12.288528864, 12.247741309, 36.311331965]
+            },{
+                name: 'Series D-I',
+                type: 'bar',
+                data: [2.410975732, 1.527152189, 1.627216940, 3.396623853, 3.158702302, 4.345810829, 12.364502656, 21.698181389, 13.837519814, 22.633087277, 34.330063971]
+            }],
+            labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+            xaxis: {
+                type: 'category',
+                labels: {datetimeFormatter: {
+                        year: 'yyyy',
+                    },
+                },
+            },
+            yaxis: {
+                title: {
+                text: 'Total Deal Value ($B)',
+                },
+            },
+            legend: {
+                horizontalAlign: 'right',
+            },
+            fill: {
+                opacity: 1
+            },
+        }
+
+       var chart = new ApexCharts(
+            document.querySelector("#chart-2"),
+            options
+        );
+        
+        chart.render();
+</script>
+
+<script type="text/javascript">
     var options = {
       chart: {
         height: 350,
@@ -359,7 +355,7 @@
         stacked: false,
       },
       stroke: {
-        width: [0, 2, 5],
+        width: [0, 5, 5, 5],
         curve: 'smooth'
       },
       plotOptions: {
@@ -368,16 +364,20 @@
         }
       },
       series: [{
-        name: 'TEAM A',
+        name: 'Total Raised ($M)',
         type: 'column',
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+        data: [26404.566556, 20046.981669, 20863.134080, 27989.456714, 39670.917121, 48068.503846, 73434.920745, 33581.294232, 15216.319918, 48674.129991, 75638.088242]
       }, {
-        name: 'TEAM B',
-        type: 'area',
-        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
-      }],
+        name: 'Maximum Raised ($M)',
+        type: 'line',
+        data: [17900, 2500, 1027.087226, 2800, 18400, 2800, 9700, 2560, 1400, 3400, 9245]
+      }, {
+        name: 'Average Raised ($M)',
+        type: 'line',
+        data: [561.799288425532, 318.2060582380952, 152.28565021897814, 247.69430720353982, 285.40228144604313, 213.6377948711111, 278.16257857954544, 190.80280813636366, 120.76444379365078, 153.0633018584906, 227.1414061321323]
+       }],
       fill: {
-        opacity: [0.85,0.25,1],
+        opacity: [0.85, 1, 1, 1],
                 gradient: {
                     inverseColors: false,
                     shade: 'light',
@@ -387,37 +387,84 @@
                     stops: [0, 100, 100, 100]
                 }
       },
-      labels: ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
-      markers: {
-        size: 0
-      },
-      xaxis: {
-        type:'datetime'
-      },
-      yaxis: {
+      labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+        xaxis: {
+            type: 'category',
+            labels: {datetimeFormatter: {
+                    year: 'yyyy',
+                },
+            },
+        },
+        yaxis: [{
+        seriesName: 'Total Raised ($M)',
         title: {
-          text: 'Points',
+            text: 'IPO Money Raised ',
         },
-        min: 0
-      },
-      legend: {
-            horizontalAlign: 'right',
-        },
-      tooltip: {
-        shared: true,
-        intersect: false,
-        y: {
-          formatter: function (y) {
-            if(typeof y !== "undefined") {
-              return  y.toFixed(0) + " points";
+        }, {
+        seriesName: 'Maximum Raised ($M)',
+        opposite: true,
+        }, {
+        seriesName: 'Maximum Raised ($M)',
+        show: false,
+        }],
+        legend: {
+                horizontalAlign: 'right',
             }
-            return y;
-            
-          }
-        }
-      }
-
     }
+
+    var chart = new ApexCharts(
+      document.querySelector("#chart-3"),
+      options
+    );
+
+    chart.render();
+
+    
+</script>
+
+
+<script type="text/javascript"> 
+        var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8', '#2E294E', '#F86624'];
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bar',
+                events: {
+                    click: function(chart, w, e) {
+                        console.log(chart, w, e )
+                    }
+                },
+            },
+            colors: colors,
+            plotOptions: {
+                bar: {
+                    columnWidth: '45%',
+                    distributed: true
+                }
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            series: [{
+                name: 'Funding ($B)',
+                data: [10.242594125, 10.091480530, 9.368485887, 9.328000000, 9.245000000, 9.245000000, 8.310110192, 7.942051208, 6.303426783, 5.791022297]
+            }],
+            xaxis: {
+                categories: ["Cloud Computing", "Internet", "Financial Services", "Music", "Music Streaming", "Video Streaming", "E-Commerce", "Health Care", "Mobile", "Biotechnology"],
+                labels: {
+                    style: {
+                        colors: colors,
+                        fontSize: '14px'
+                    }
+                }
+            },
+            yaxis: {
+            seriesName: 'Total Raised ($M)',
+            title: {
+                text: 'IPO Money Raised ',
+            },
+            },
+        }
 
         var chart = new ApexCharts(
             document.querySelector("#chart-4"),
@@ -427,5 +474,122 @@
         chart.render();
        
 </script>
+
+<script type="text/javascript">
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: [{
+                name: 'Funding ($B)',
+                data: [29.735328660, 18.521275647, 17.439970226, 14.116763440, 10.325759156, 4.450484871, 4.431193202, 4.238707549, 3.231567325, 2.785639631, 2.744250579, 2.633992516]
+            }],
+            xaxis: {
+                categories: ["Beijing", "Hangzhou", "San Francisco", "Shanghai", "New York", "Cambridge", "Shenzhen", "London", "Boston", "Menlo Park", "Jakarta", "Guangzhou"],
+            }
+        }
+
+       var chart = new ApexCharts(
+            document.querySelector("#chart-5"),
+            options
+        );
+        
+        chart.render();
+    
+</script>
+
+<script type="text/javascript">
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: [{
+                name: 'Funding ($B)',
+                data: [	14.000000000, 2.500000000, 2.500000000, 2.220000000, 1.945467061, 1.900000000, 1.505729299, 1.500000000, 1.368670321, 1.250000000, 1.250000000, 1.241346383]
+            }],
+            xaxis: {
+                categories: ["Ant Financial | CN", "Grab | SG", "JD Logistics | CN", "SenseTime | CN", "JD Finance | CN", "Du Xiaoman Financial | CN", "China Media Capital (CMC) | CN", "Go-Jek | IDN", "Pinduoduo | CN", "Epic Games | USA", "Meicai | CN", "Wanda Film | CN"],
+            }
+        }
+
+       var chart = new ApexCharts(
+            document.querySelector("#chart-6"),
+            options
+        );
+        
+        chart.render();
+    
+</script>
+
+<script type="text/javascript"> 
+    var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8', '#2E294E', '#F86624'];
+    var options = {
+        chart: {
+            height: 350,
+            type: 'bar',
+            events: {
+                click: function(chart, w, e) {
+                    console.log(chart, w, e )
+                }
+            },
+        },
+        colors: colors,
+        plotOptions: {
+            bar: {
+                columnWidth: '45%',
+                distributed: true
+            }
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        series: [{
+            name: 'Funding Round Count',
+            data: [279, 142, 124, 97, 96, 92, 91, 86, 78, 75]
+        }],
+        xaxis: {
+            categories: ["Y Combinator", "Quake Capital Partners", "Hiventures Investment Fund", "Techstars", "Crowdcube", "New Enterprise Associates", "Accel", "Sequoia Capital China", "Sequoia Capital", "Tencent Holdings"],
+            labels: {
+                style: {
+                    colors: colors,
+                    fontSize: '14px'
+                }
+            }
+        },
+        yaxis: {
+        seriesName: 'Funding Round Count',
+        title: {
+            text: 'Funding Round Count',
+        },
+        },
+    }
+
+    var chart = new ApexCharts(
+        document.querySelector("#chart-7"),
+        options
+    );
+
+    chart.render();
+
+</script>
+
 
 {% endblock viewport %}

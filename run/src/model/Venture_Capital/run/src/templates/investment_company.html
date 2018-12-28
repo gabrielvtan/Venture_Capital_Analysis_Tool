@@ -6,119 +6,28 @@
           <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
             <div class="container-fluid">
               <!-- Brand -->
-              <a class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Company Search</a>
+              <a class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Investment Company Search</a>
               <!-- Form -->
-              <form role = "search" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" id = "companysearch">
+              <form role = "search" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" id = "investmentcompanysearch">
                 <div class="form-group mb-0">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                      <input type = "text" class="form-control" placeholder="Search" type="text" name = "companysearch">
+                      <input type = "text" class="form-control" placeholder="Search" type="text" name = "investmentcompanysearch">
                   </div>
                 </div>
               </form>
             </div>
           </nav>
           <!-- Header -->
-          <div class="header bg-gradient-primary pb-8 pt-5 pt-lg-8" style="min-height: 500px">
+          <div class="header bg-gradient-primary pb-8 pt-5 pt-lg-8" style="min-height: 300px">
             <div class="container-fluid">
               <div class="header-body">
-                <!-- Card stats -->
-                <div class="row">
-
-                  <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                            <span class="h2 font-weight-bold mb-0">350,897</span>
-                          </div>
-                          <div class="col-auto">
-                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                              <i class="fas fa-chart-bar"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <p class="mt-3 mb-0 text-muted text-sm">
-                          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                          <span class="text-nowrap">Since last month</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                            <span class="h2 font-weight-bold mb-0">2,356</span>
-                          </div>
-                          <div class="col-auto">
-                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                              <i class="fas fa-chart-pie"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <p class="mt-3 mb-0 text-muted text-sm">
-                          <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                          <span class="text-nowrap">Since last week</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                            <span class="h2 font-weight-bold mb-0">924</span>
-                          </div>
-                          <div class="col-auto">
-                            <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                              <i class="fas fa-users"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <p class="mt-3 mb-0 text-muted text-sm">
-                          <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                          <span class="text-nowrap">Since yesterday</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                            <span class="h2 font-weight-bold mb-0">49,65%</span>
-                          </div>
-                          <div class="col-auto">
-                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                              <i class="fas fa-percent"></i>
-                            </div>
-                          </div>
-                          </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                              <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                              <span class="text-nowrap">Since last month</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+                
               </div>
+            </div>
+          </div>
 
 <!-- Page content -->
     <div class="container-fluid mt--7">
@@ -146,7 +55,7 @@
                     <i class="ni business_briefcase-24 mr-2"></i> - 
                   </div>
                   <div>
-                    <span class="heading" id ="name"></span>
+                    <h1 class="h1 mb-0 text-white text-uppercase d-none d-lg-inline-block" id ="name"></h1>
                   </div>
                   <div class="row">
                     <div class="col">
@@ -234,27 +143,34 @@
                     </div>
 
                     <div class="card-body">
-                    <h6 class="heading-small text-muted mb-4">Funding Rounds</h6>
+                        <!-- Investors -->
+                        <h6 class="heading-small text-muted mb-4">Competitors</h6>
                         <div class="pl-lg-4">
-                            <div class="col-md-8 col-sm-8">
-                                <ul id="rounds" class="description text-white">
-                                </ul>
-                            </div>
+                          <div class="col-md-12 col-sm-12">
+                              <ul id="competitors" class="description text-white">
+                              </ul>
+                          </div>
+                        </div>
+      
+                        <hr class="my-4" />
+                        <!-- Description -->
+                        <h6 class="heading-small text-muted mb-4">Investments</h6>
+                        <div class="pl-lg-4">
+                          <div class="col-md-12 col-sm-12">
+                              <ul id="investments" class="description text-white">
+                              </ul>
+                          </div>
                         </div>
 
-                  <hr class="my-4" />
-                  <!-- Investors -->
-                  <h6 class="heading-small text-muted mb-4">Competitors</h6>
-                  <div class="pl-lg-4">
-                    
-                  </div>
-
-                  <hr class="my-4" />
-                  <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4">Important People</h6>
-                  <div class="pl-lg-4">
-
-                  </div>
+                        <hr class="my-4" />
+                        <!-- Description -->
+                        <h6 class="heading-small text-muted mb-4">Acqusitions</h6>
+                        <div class="pl-lg-4">
+                          <div class="col-md-12 col-sm-12">
+                              <ul id="acquisitions" class="description text-white">
+                              </ul>
+                          </div>
+                        </div>
 
                 </div>
             </div>
@@ -337,20 +253,46 @@
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
-        function showCompany(name) {
-            $.get("/company/" + encodeURIComponent(name),
+        function showCompetitors(name) {
+            $.get("/investmentcompany/" + encodeURIComponent(name),
                     function (data) {
                         if (!data) return ;
-                        var $list = $("#rounds").empty();
-                        data.rounds.forEach(function (round) {
-                            $list.append($("<li>" + round.announced_on + " | " + round.type + " amount = " +numberWithCommas(round.money_raised_usd) + "</li>"));
+                        var $list = $("#competitors").empty();
+                        data.competitors.forEach(function (competitor) {
+                            $list.append($("<li>" + competitor.competitor + " | " + competitor.investments +" | Industries | " + competitor.categories + "</li>"));
                         });
                     }, "json");
             return false;
         }
+
+        function showInvestments(name) {
+            $.get("/investmentcompany/" + encodeURIComponent(name),
+                    function (data) {
+                        if (!data) return ;
+                        var $list = $("#investments").empty();
+                        data.investments.forEach(function (investment) {
+                            $list.append($("<li>" + investment.name + " | " + investment.date + " | " + numberWithCommas(investment.money) + "</li>"));
+                        });
+                    }, "json");
+            return false;
+        }
+
+        function showAcquisitions(name) {
+            $.get("/investmentcompany/" + encodeURIComponent(name),
+                    function (data) {
+                        if (!data) return ;
+                        var $list = $("#acquisitions").empty();
+                        data.acquisitions.forEach(function (acquisition) {
+                            $list.append($("<li>" + acquisition.name + " | " + acquisition.type + " | " + acquisition.announced_on + " | " + acquisition.categories +"</li>"));
+                        });
+                    }, "json");
+            return false;
+        }
+
+
         
         function showGraph(name) {
-            $.get("/graph/" +encodeURIComponent(name),
+            $.get("/investmentcompanygraph/" +encodeURIComponent(name),
                     function (data) {
                         if (!data) return;
                             var width = 800, 
@@ -571,9 +513,10 @@
         }
 
         function search() {
-            var query=$("#companysearch").find("input[name=companysearch]").val();
-            $.get("/companysearch?q=" + encodeURIComponent(query),
+            var query=$("#investmentcompanysearch").find("input[name=investmentcompanysearch]").val();
+            $.get("/investmentcompanysearch?q=" + encodeURIComponent(query),
                     function (data) {
+                        console.log(data)
                         if (!data) return;
                             $("#name").text(data[0].name)
                             $("#description").text(data[0].description)
@@ -588,13 +531,15 @@
                             $("#opening_valuation").text(data[0].opening_valuation_usd.toLocaleString())
                             $("#went_public_on").text(data[0].went_public_on)
                             $("#number_of_investments").text(data[0].number_of_investments)
-                        showCompany(data[0].name);
+                        showCompetitors(data[0].name);
+                        showInvestments(data[0].name);
+                        showAcquisitions(data[0].name);
                         showGraph(data[0].name);
                     }, "json");
             return false;
         }
 
-        $("#companysearch").submit(search);
+        $("#investmentcompanysearch").submit(search);
         search();
     })
 </script>
