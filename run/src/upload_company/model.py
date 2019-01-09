@@ -9,7 +9,7 @@ import shutil
 from wrapper import Crunchbase
 import queries_company as q
 
-from py2neo import Graph, authenticate
+from py2neo import Graph
 graph = Graph()
 
 
@@ -95,6 +95,7 @@ def company_to_neo(output):
     write_to_db(q.found_f_comp(),output)
     write_to_db(q.board_prop(),output)
     write_to_db(q.board_b_comp(),output)
+    write_to_db(q.acquiree_prop(),output)
     write_to_db(q.comp_a_acquiree(),output)
     write_to_db(q.head_prop(),output)
     write_to_db(q.comp_h_head(),output)
@@ -102,6 +103,10 @@ def company_to_neo(output):
     write_to_db(q.comp_c_cat(),output)
     write_to_db(q.ipo_prop(),output)
     write_to_db(q.comp_i_ipo(),output)
+    write_to_db(q.investment_fr_prop(),output)
+    write_to_db(q.comp_i_in_fr(),output)
+    write_to_db(q.funded_org_prop(),output)
+    write_to_db(q.fr_i_ic(),output)
 
 # Once a json file has been written to the database then it is moved to the completed folder
 def list_of_company_to_neo():

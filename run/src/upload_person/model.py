@@ -9,7 +9,7 @@ import shutil
 from wrapper import Crunchbase
 import queries_people as p
 
-from py2neo import Graph, authenticate
+from py2neo import Graph
 graph = Graph()
 
 
@@ -99,6 +99,10 @@ def person_to_neo(output):
     write_to_db(p.fr_f_comp(),output)
     write_to_db(p.head_prop(),output)
     write_to_db(p.person_h_head(),output)
+    write_to_db(p.partner_props(),output)
+    write_to_db(p.partner_pf_fr(),output)
+    write_to_db(p.investment_company(),output)
+    write_to_db(p.fr_i_ic(),output)
 
 # Once a json file has been written to the database then it is moved to the completed folder
 def list_of_people_to_neo():

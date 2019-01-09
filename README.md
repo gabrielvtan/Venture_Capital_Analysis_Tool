@@ -15,12 +15,22 @@ pip install py2neo
 ```
 
 ## Instructions
-- instructions for API key 
+### API key
+- Once you have requested and received your [REST API key](https://data.crunchbase.com/docs/using-the-api) from Crunchbase insert the key into the `wrapper.py` file in both the upload_company and upload_person folders.
+- `cd run/src/upload_company`
+- `cd run/src/upload_person`
+
+### Upload Crunchbase data into Neo4j database
 - instructions for company download
 - instructions for people download
 - connection to neo4j database
 - additional information on bolt 
 
+
+### Using the Website 
+- instructions for searching
+- instructions on launching the website locally 
+- walkthrough the website functionality
 
 
 ## To Add:

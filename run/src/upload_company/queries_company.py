@@ -1,21 +1,10 @@
-## Test - for Investment companies and schools 
-"""
-WITH "https://api.crunchbase.com/v3.1/organizations/tiger-global?data=key_set_url?relationships=funding_rounds,founders,board_members_and_advisors,investments,acquisitions,acquired_by,ipo,funds,category,current_team&user_key=cf5494206fc66e0d489c8e3762a8ffd3" AS url
-CALL apoc.load.json(url) YIELD value
-UNWIND value.data AS o
-UNWIND o.relationships.current_team.items as currentTeam
-WITH DISTINCT currentTeam
-
-"""
-
 ## Test - Get info from DB
 def test_query():
     return("""
         MATCH(c)
         RETURN count(c) AS NodeCount
     """)
-
-        
+      
 
 # CONSTRAINTS
 def const_comp():
@@ -52,7 +41,6 @@ def ind_cat():
 
 def ind_fr():
     return("CREATE INDEX ON :FundingRounds(type);")
-
 
 
 # MERGE Company Properties 
@@ -94,6 +82,7 @@ def fr_prop():
         MERGE (funding_round:FundingRounds{uuid:fundingRound.uuid})
             SET funding_round.type= fundingRound.properties.funding_type,
             funding_round.announced_on = fundingRound.properties.announced_on,
+            funding_round.series = fundingRound.properties.seris,
             funding_round.money_raised_currency_code = fundingRound.properties.money_raised_currency_code,
             funding_round.money_raised_usd = fundingRound.properties.money_raised_usd,
             funding_round.pre_money_valuation = fundingRound.properties.pre_money_valuation;
@@ -223,19 +212,37 @@ def board_b_comp():
             }]->(company)
         """)
 
+# MERGE acquisition properties 
+def acquiree_prop():
+    return ("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.acquisitions.items AS acquire
+        WITH DISTINCT acquire
+
+        MERGE (acquisition:Company{uuid:acquire.relationships.acquiree.uuid})
+            SET acquisition.name = acquire.relationships.acquiree.properties.name, 
+            acquisition.profile_image_url = acquire.relationships.acquiree.properties.profile_image_url,
+            acquisition.primary_role = acquire.relationships.acquiree.properties.primary_role,
+            acquisition.founded_on = acquire.relationships.acquiree.properties.founded_on
+        """)
+
 # MATCH AND MERGE (company)-[:ACQUIRED]->(company)
 def comp_a_acquiree():
     return ("""
         WITH {json} as value
         UNWIND value.data AS o
-        UNWIND o.relationships.acquisitions.items AS acquisitions
+        UNWIND CASE WHEN o.relationships.acquisitions.items = []
+        THEN [null]
+        ELSE o.relationships.acquisitions.items END
+        AS acquire
 
         MATCH (company:Company {uuid:o.uuid})
-        MATCH (acquisition:Company{uuid:acquisitions.relationships.acquiree.uuid})
+        MATCH (acquisition:Company{uuid:acquire.relationships.acquiree.uuid})
         MERGE (company)-[acquired:ACQUIRED
-            {uuid:COALESCE(acquisitions.uuid,[]),
-            type:COALESCE(acquisitions.properties.acquisition_type,[]),
-            announced_on:COALESCE(acquisitions.properties.announced_on,[])
+            {uuid:COALESCE(acquire.uuid,[]),
+            type:COALESCE(acquire.properties.acquisition_type,[]),
+            announced_on:COALESCE(acquire.properties.announced_on,[])
             }]->(acquisition)
         """)
 
@@ -249,7 +256,7 @@ def head_prop():
         UNWIND o.relationships.headquarters.item as headquarter
         WITH DISTINCT headquarter
 
-        MERGE(head:Headquarters{city:headquarter.properties.city})
+        MERGE(head:Headquarters{city:COALESCE(headquarter.properties.city,[])})
         SET head.region = headquarter.properties.region,
             head.country = headquarter.properties.country
     """)
@@ -315,6 +322,7 @@ def ipo_prop():
             i.stock_exchange_symbol = ipo.properties.stock_exchange_symbol
     """)
 
+
 # MATCH and Merge (comp)-[:IPO]->(ipo)
 def comp_i_ipo():
     return("""
@@ -325,4 +333,58 @@ def comp_i_ipo():
         MATCH (company:Company {uuid:o.uuid})
         MATCH (i:Ipo{uuid:ipo.uuid})
         MERGE(company)-[:IPO]-(i)
-        """)
+    """)
+
+
+# MERGE investment funding round properties
+def investment_fr_prop():
+    return("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.investments.items as investment
+
+        MERGE(fundingRound:FundingRounds{uuid:investment.relationships.funding_round.uuid})
+        SET fundingRound.type = investment.relationships.funding_round.properties.funding_type,
+            fundingRound.announced_on = investment.relationships.funding_round.properties.announced_on,
+            fundingRound.series = investment.relationships.funding_round.properties.series,
+            fundingRound.money_raised_usd = investment.relationships.funding_round.properties.money_raised_usd,
+            fundingRound.money_raised_currency_code = investment.relationships.funding_round.properties.money_raised_currency_code,
+            fundingRound.pre_money_valuation_usd = investment.relationships.funding_round.properties.pre_money_valuation_usd
+    """)
+
+
+# MATCH AND MERGE (comp)-[:INVESTED_IN]-(in_fr)
+def comp_i_in_fr():
+    return("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.investments.items as investment
+
+        MATCH(company:Company {uuid:o.uuid})
+        MATCH(fundingRound:FundingRounds{uuid:investment.relationships.funding_round.uuid})
+        MERGE(company)-[:INVESTED_IN]-(fundingRound)
+    """)
+
+
+# MERGE investment properties
+def funded_org_prop():
+    return("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.investments.items as investment
+
+        MERGE(ic:Company{uuid:investment.relationships.funding_round.relationships.funded_organization.uuid})
+        SET ic.name = investment.relationships.funding_round.relationships.funded_organization.properties.name
+    """)
+
+# MATCH AND MERGE (fr)-[:INVESTED_IN]-(ic)
+def fr_i_ic():
+    return("""
+        WITH {json} as value
+        UNWIND value.data AS o
+        UNWIND o.relationships.investments.items as investment
+
+        MATCH(fundingRound:FundingRounds{uuid:investment.relationships.funding_round.uuid})
+        MATCH(ic:Company{uuid:investment.relationships.funding_round.relationships.funded_organization.uuid})
+        MERGE(fundingRound)-[:INVESTED_IN]->(ic)
+    """)
